@@ -1,0 +1,5 @@
+*.pdf
+.project
+.settings/*
+*.ppt
+*.py
