@@ -6,7 +6,7 @@
  * @param Parent - inherit class
  * @taken http://javascript.ru/tutorial/object/inheritance
  */
-function inherit(Child, Parent) {
+exports.inherit = function(Child, Parent) {
 	var F = function() {
 	};
 	F.prototype = Parent.prototype;
@@ -23,7 +23,7 @@ function inherit(Child, Parent) {
  * @param constructor - candidate to parent
  * @returns {Boolean}
  */
-function instanceOf(object, constructor) {
+exports.instanceOf = function(object, constructor) {
 	var o = object;
 
 	while (o.__proto__ != null) {
