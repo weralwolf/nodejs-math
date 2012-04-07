@@ -79,7 +79,13 @@ Vector.fn = Vector.prototype = {
 	mult : function(val) {
 		return this._byElementOperator("mult", val);
 	},
-
+	sum : function() {
+		for(var i = 0, s = 0; i < this.size(); s += this.data[i++]);
+		return s;
+	},
+	scalarMult: function(val) {
+		return this.mult(val).sum();
+	},
 	_byElementOperator : function(operatorType, val) {
 		if (this.operators[operatorType] === undefined) {
 			this.exceptions.operatorNotImplemented("Vector._byElementOperator",
@@ -111,4 +117,4 @@ Vector.fn.init.prototype = Vector.fn;
 
 var f = new Vector(1, 2, 3);
 var g = new Vector(5, 6, 7);
-console.log(f.mult(g).toString());
+console.log(f.scalarMult(g));
