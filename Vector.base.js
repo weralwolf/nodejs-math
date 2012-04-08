@@ -155,8 +155,13 @@ Vector.fn = Vector.prototype = {
 				this.exceptions.operatorArgumentDim(operatorName, val);
 			}
 			;
+		} else if (typeof(val) == 'number') {
+			for ( var i = 0; i < this.size(); i++) {
+				result.push(_action(this.data[i], val));
+			}
+			;
 		} else {
-			this.exceptions.operatorArgumentType(operatorName, val);
+			this.exceptions.operatorArgumentType(operatorName, typeof(val));
 		}
 		;
 		return result;
