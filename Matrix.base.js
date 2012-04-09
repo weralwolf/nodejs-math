@@ -45,7 +45,7 @@ Matrix.fn.at = function() {
 	if (arguments.length == 1) {
 		var result = new vb.Vector();
 		var row = parseInt(arguments[0]) * this.columns;
-		for ( var i = 0; i < this.columns; result.push(this.data[row + i]))
+		for ( var i = 0; i < this.columns; result.push(this.data[row + i++]))
 			;
 		return result;
 	} else if (arguments.length == 2) {
@@ -112,8 +112,8 @@ Matrix.fn.adjugate = function() {
 	return new Matrix(this.rows, this.columns, data);
 };
 
-Matrix.fn.mult = function(val) {
-	if (typeof(val) == 'number') {
+Matrix.fn.multе = function(val) {
+	if (typeof (val) == 'number') {
 		return this.operatorConvolution("mult", val);
 	} else if (val instanceof vb.Vector) {
 		return 0;
@@ -121,7 +121,8 @@ Matrix.fn.mult = function(val) {
 		return 0;
 	} else {
 		return 0;
-	};
+	}
+	;
 };
 
 Matrix.fn.invertible = function() {
