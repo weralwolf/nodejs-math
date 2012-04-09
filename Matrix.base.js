@@ -112,7 +112,11 @@ Matrix.fn.adjugate = function() {
 	return new Matrix(this.rows, this.columns, data);
 };
 
-Matrix.fn.multе = function(val) {
+/*
+ * @TODO we should make different right and left multiplication and also add
+ * matrix multiplication to Vector
+ */
+Matrix.fn.mult = function(val) {
 	if (typeof (val) == 'number') {
 		return this.operatorConvolution("mult", val);
 	} else if (val instanceof vb.Vector) {
@@ -120,7 +124,7 @@ Matrix.fn.multе = function(val) {
 	} else if (val instanceof Matrix) {
 		return 0;
 	} else {
-		return 0;
+		this.exceptions.operatorArgumentType("Matrix.mult", typeof (val));
 	}
 	;
 };
