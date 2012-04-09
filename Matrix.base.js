@@ -43,7 +43,7 @@ Matrix.fn.toString = function() {
 
 Matrix.fn.at = function() {
 	if (arguments.length == 1) {
-		var result = new Vector();
+		var result = new vb.Vector();
 		var row = parseInt(arguments[0]) * this.columns;
 		for ( var i = 0; i < this.columns; result.push(this.data[row + i]))
 			;
@@ -53,6 +53,7 @@ Matrix.fn.at = function() {
 				+ parseInt(arguments[1])];
 	}
 	;
+	return undefined;
 };
 
 Matrix.fn.cofactor = function(i, j) {
@@ -111,6 +112,18 @@ Matrix.fn.adjugate = function() {
 	return new Matrix(this.rows, this.columns, data);
 };
 
+Matrix.fn.mult = function(val) {
+	if (typeof(val) == 'number') {
+		return this.operatorConvolution("mult", val);
+	} else if (val instanceof vb.Vector) {
+		return 0;
+	} else if (val instanceof Matrix) {
+		return 0;
+	} else {
+		return 0;
+	};
+};
+
 Matrix.fn.invertible = function() {
 	var A = this.adjugate();
 	A.mult(1. / this.det());
@@ -121,4 +134,4 @@ Matrix.fn.init.prototype = Matrix.fn;
 exports.Matrix = Matrix;
 
 var m = new Matrix(2, 2, [ 1, 0, 0, 1 ]);
-console.log(m.invertible().toString());
+console.log(m.at(1));

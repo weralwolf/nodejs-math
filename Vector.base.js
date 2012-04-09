@@ -24,6 +24,9 @@ Vector.fn = Vector.prototype = {
 			return a * b;
 		}
 	},
+	/**
+	 * Contains all need by vector exceptions which would be called inside functions
+	 */
 	exceptions : {
 		operatorArgumentType : function(operator, arg) {
 			throw "Operator `"
@@ -165,7 +168,7 @@ Vector.fn = Vector.prototype = {
 		}
 		;
 		return result;
-	},
+	}
 };
 
 Vector.fn.init.prototype = Vector.fn;
